@@ -1,0 +1,11 @@
+.errorList {
+  overflow: scroll;
+  height: calc(100% - 179px);
+  margin: 0 20px;
+  text-align: center;
+  background: #3b444c;
+  color: #fff;
+  box-shadow: 1px 1px 8px #000;
+  border-radius: 10px;
+  padding: 5px;
+}

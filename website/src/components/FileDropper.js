@@ -73,9 +73,11 @@ export default class FileDroper extends React.Component {
           onDragLeave={evt => this.handleDragOver(evt, false)}
           onDrop={evt => this.hadnleDrop(evt)}
         >
-          <p>Drop your configuration file here</p>
-          <p>or</p>
-          <p>Click here to open it</p>
+          <div>
+            <p>Drop your configuration file here</p>
+            <p>or</p>
+            <p>Click here to open it</p>
+          </div>
         </div>
       </div>
     );

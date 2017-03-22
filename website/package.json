@@ -8,7 +8,7 @@
     "lint": "eslint ./src",
     "serve:dist": "node server.js --env=dist",
     "start": "node server.js --env=dev",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run dist && gh-poages -d dist"
   },
   "repository": "",
   "keywords": [],

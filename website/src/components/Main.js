@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import FileDropper from './FileDropper';
+import ErrorList from './ErrorList';
 
 import 'styles/main.scss';
 
@@ -20,6 +21,7 @@ export default class Main extends React.Component {
         <Header />
         <div className='container'>
           <FileDropper />
+          <ErrorList />
         </div>
       </div>
     );
