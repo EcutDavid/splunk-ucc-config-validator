@@ -1,0 +1,10 @@
+.index {
+  height: 100%;
+  .container {
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.25);
+    margin: 10px 10px;
+    height: calc(100% - 65px);
+    box-sizing: border-box;
+  }
+}

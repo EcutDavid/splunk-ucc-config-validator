@@ -39,3 +39,12 @@
 @include foundation-top-bar;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
+
+body, html {
+  margin: 0;
+  background: #f5f5f5;
+}
+
+#app {
+  height: 100%;
+}
