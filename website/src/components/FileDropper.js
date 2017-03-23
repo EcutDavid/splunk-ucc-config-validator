@@ -1,6 +1,6 @@
 import React from 'react';
 import fileDialog from 'file-dialog';
-
+import validator from 'splunk-ucc-config-validator';
 import 'styles/fileDropper.scss';
 
 export default class FileDroper extends React.Component {
@@ -33,7 +33,6 @@ export default class FileDroper extends React.Component {
       return alert('Just give me one file please :)');
     }
 
-
     const file = files[0];
     if (file.size > (1024 * 1024)) {
       return alert('Your file is bigger than 1MB, are you sure this is a configuration file? Contact davidguandev@gmail.com if you indeed need that support.');
@@ -45,9 +44,16 @@ export default class FileDroper extends React.Component {
   }
 
   readFile(file) {
+    const { updateErrors } = this.props;
     const reader = new FileReader();
     reader.onload = evt => {
-      console.log(evt.target.result);
+      let json;
+      try {
+        json = JSON.parse(evt.target.result);
+      } catch (e) {
+        return alert('the file\'s content isn\'t a valid JSON text');
+      }
+      updateErrors(validator.validate(json).errors);
     };
 
     reader.readAsText(file);

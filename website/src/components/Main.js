@@ -6,12 +6,23 @@ import ErrorList from './ErrorList';
 import 'styles/main.scss';
 
 export default class Main extends React.Component {
+  constructor() {
+    super();
+    this.state = { errors: undefined }
+  }
+
+  updateErrors(errors) {
+    this.setState({ errors });
+  }
+
   normalizeDragHandle(evt) {
     evt.stopPropagation();
     evt.preventDefault();
   }
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div
         className='index'
@@ -20,8 +31,8 @@ export default class Main extends React.Component {
       >
         <Header />
         <div className='container'>
-          <FileDropper />
-          <ErrorList />
+          <FileDropper updateErrors={errors => this.updateErrors(errors)}/>
+          <ErrorList errors={errors}/>
         </div>
       </div>
     );
