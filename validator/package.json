@@ -1,6 +1,6 @@
 {
   "name": "splunk-ucc-config-validator",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "UCC configuration file validator",
   "keywords": [],
   "author": "David Guan(davidguandev@gmail.com)",
@@ -8,7 +8,8 @@
   "scripts": {
     "test": "mocha tests --recursive",
     "test-watch": "mocha tests --recursive --watch --require babel-register",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",

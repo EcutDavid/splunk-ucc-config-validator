@@ -1,12 +1,24 @@
 import schema from '../schema.json';
 import {Validator} from 'jsonschema';
 import _ from 'lodash';
+import indexToName from './indexToName';
 
-function validateSchema(config) {
+function validateSchema(rawConfig, options = {}) {
+  const { transformIndex } = options;
   const validator = new Validator();
-  const res = validator.validate(config, schema);
+  const res = validator.validate(rawConfig, schema);
   if(!res.errors.length) {
-    res.errors = checkConfigDetails(config);
+    res.errors = checkConfigDetails(rawConfig);
+  }
+  if (transformIndex) {
+    try {
+      res.errors.forEach(d => {
+        const newProperty = indexToName(rawConfig, d.property);
+        d.property = newProperty;
+      });
+    } catch (e) {
+      console.error('Oops... index transformation failed, will be appreciated if you add a new bug with your configuration file a new bug in https://github.com/EcutDavid/splunk_ucc_config_validator');
+    }
   }
   return {
     failed: !!res.errors.length,

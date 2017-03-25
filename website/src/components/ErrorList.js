@@ -17,7 +17,10 @@ export default class ErrorList extends React.Component {
               <p className='counter'>{`${errors.length} error${errors.length > 1 ? 's' : ''} found in your configuration.`}</p>
               {
                 errors.map((d, i) => (
-                  <p key={i}>{`${d.property}: ${d.message}`}</p>
+                  <p key={i}>
+                    <span style={{color: '#50C54f'}}>{d.property.replace('instantce.', '')}:</span>
+                    {` ${d.message}`}
+                  </p>
                 ))
               }
             </div>

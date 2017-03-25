@@ -8,7 +8,7 @@ import 'styles/main.scss';
 export default class Main extends React.Component {
   constructor() {
     super();
-    this.state = { errors: undefined }
+    this.state = { errors: undefined };
   }
 
   updateErrors(errors) {
