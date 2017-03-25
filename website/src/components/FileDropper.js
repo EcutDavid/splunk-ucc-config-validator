@@ -53,7 +53,7 @@ export default class FileDroper extends React.Component {
       } catch (e) {
         return alert('the file\'s content isn\'t a valid JSON text');
       }
-      updateErrors(validator.validate(json).errors);
+      updateErrors(validator.validate(json, { transformIndex: true }).errors);
     };
 
     reader.readAsText(file);
