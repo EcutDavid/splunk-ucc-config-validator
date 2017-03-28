@@ -2,17 +2,15 @@ import React from 'react';
 import Header from './Header';
 import FileDropper from './FileDropper';
 import ErrorList from './ErrorList';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 import 'styles/main.scss';
 
-export default class Main extends React.Component {
-  constructor() {
-    super();
-    this.state = { errors: undefined };
-  }
-
+export class Main extends React.Component {
   updateErrors(errors) {
-    this.setState({ errors });
+    const { updateErrors } = this.props;
+    updateErrors(errors);
   }
 
   normalizeDragHandle(evt) {
@@ -21,7 +19,7 @@ export default class Main extends React.Component {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors } = this.props;
 
     return (
       <div
@@ -38,3 +36,10 @@ export default class Main extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return state;
+}
+
+const ConnectedMain = connect(mapStateToProps, actions)(Main);
+export default ConnectedMain;
